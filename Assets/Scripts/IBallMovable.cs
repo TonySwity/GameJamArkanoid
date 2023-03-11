@@ -1,9 +1,7 @@
 using UnityEngine;
-namespace Gameplay.Ball
+
+public interface IBallMovable
 {
-    public interface IBallMovable
-    {
-        public void Move();
-        public void SetDirection(Vector3 dir);
-    }
+    public void Move();
+    public void SetDirection(Vector3 dir);
 }

@@ -1,18 +1,25 @@
 using UnityEngine;
 
-namespace Gameplay.Platform
+public class Platform : MonoBehaviour
 {
-    public class Platform: MonoBehaviour
-    {
-        private IPlatformMovable _platformMovable;
-        private void Start()
-        {
-            _platformMovable = GetComponent<IPlatformMovable>();
-        }
+    [SerializeField] private Vector3 _lunchDirection = new Vector3(1f, 7f, 0f);
+    private IPlatformMovable _platformMovable;
 
-        private void Update()
+    private BallMove _ball;
+    private void Start()
+    {
+        _platformMovable = GetComponent<IPlatformMovable>();
+    }
+
+    private void FixedUpdate()
+    {
+        _platformMovable.Move();
+
+        if (transform.childCount > 1 && Input.GetKeyDown(KeyCode.Space))
         {
-            _platformMovable.Move();
+            BallMove ball = transform.GetComponentInChildren<BallMove>();
+
+            ball.Launch(_lunchDirection);
         }
     }
 }

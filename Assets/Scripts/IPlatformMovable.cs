@@ -1,7 +1,4 @@
-namespace Gameplay.Platform
+public interface IPlatformMovable
 {
-    public interface IPlatformMovable
-    {
-        public void Move();
-    }
+    public void Move();
 }
